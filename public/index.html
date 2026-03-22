@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle Hints</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Wordle Hints Helper</h1>
+      <p class="subtitle">
+        Click letters to mark GREEN (correct position) or YELLOW (wrong position)
+      </p>
+
+      <div class="game-container">
+        <div class="guesses-container" id="guessesContainer">
+          <!-- Rows will be generated dynamically -->
+        </div>
+
+        <div id="suggestions" class="suggestions hidden">
+          <h3>Suggested Words:</h3>
+          <div id="suggestionsList" class="suggestions-list"></div>
+        </div>
+
+        <button id="resetBtn" class="reset-button">Reset Game</button>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
