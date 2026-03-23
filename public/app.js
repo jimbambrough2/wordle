@@ -57,6 +57,10 @@ function initializeBoard() {
     submitBtn.disabled = true;
     submitBtn.title = "Submit guess";
     submitBtn.innerHTML = "→";
+    // Hide button if not the current row
+    if (rowIdx !== currentRowIndex) {
+      submitBtn.classList.add("hidden");
+    }
     submitBtn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -261,7 +265,20 @@ async function submitGuess() {
 
     // Move to next row if available
     if (currentRowIndex < TOTAL_ROWS - 1) {
+      // Hide previous row's submit button
+      const prevSubmitBtn = document.querySelector(`.submit-btn[data-row="${currentRowIndex}"]`);
+      if (prevSubmitBtn) {
+        prevSubmitBtn.classList.add("hidden");
+      }
+
       currentRowIndex++;
+      
+      // Show new current row's submit button
+      const newSubmitBtn = document.querySelector(`.submit-btn[data-row="${currentRowIndex}"]`);
+      if (newSubmitBtn) {
+        newSubmitBtn.classList.remove("hidden");
+      }
+
       updateSubmitButtonState();
       document
         .querySelector(`[data-row="${currentRowIndex}"][data-col="0"]`)
